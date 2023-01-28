@@ -1,2 +1,18 @@
-# solana-drip-go
+# Solana Drip Go
+
 Solana Drip Go Clients generated via anchor-go
+
+## Getting Started
+
+install
+
+```bash
+go get github.com/dcaf-labs/solana-drip-go
+```
+
+## Adding a New Version
+
+```bash
+./generate.sh <version> <path to idl>
+# ./generate.sh 0 ./idl.json
+```
