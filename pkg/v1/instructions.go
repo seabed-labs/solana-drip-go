@@ -32,31 +32,21 @@ var (
 
 	Instruction_InitVaultPeriod = ag_binary.TypeID([8]byte{46, 103, 251, 142, 95, 43, 55, 27})
 
-	Instruction_InitOracleConfig = ag_binary.TypeID([8]byte{77, 144, 180, 246, 217, 15, 118, 92})
-
 	Instruction_Deposit = ag_binary.TypeID([8]byte{242, 35, 198, 137, 82, 225, 242, 182})
 
 	Instruction_DepositWithMetadata = ag_binary.TypeID([8]byte{66, 112, 168, 108, 67, 61, 27, 151})
-
-	Instruction_DripSplTokenSwap = ag_binary.TypeID([8]byte{129, 32, 61, 181, 42, 74, 219, 106})
-
-	Instruction_DripOrcaWhirlpool = ag_binary.TypeID([8]byte{31, 217, 180, 147, 224, 40, 53, 88})
-
-	Instruction_DripV2OrcaWhirlpool = ag_binary.TypeID([8]byte{57, 234, 17, 173, 111, 158, 193, 112})
 
 	Instruction_WithdrawB = ag_binary.TypeID([8]byte{28, 146, 254, 247, 183, 161, 195, 149})
 
 	Instruction_ClosePosition = ag_binary.TypeID([8]byte{123, 134, 81, 0, 49, 68, 98, 98})
 
+	Instruction_DripSplTokenSwap = ag_binary.TypeID([8]byte{129, 32, 61, 181, 42, 74, 219, 106})
+
+	Instruction_DripOrcaWhirlpool = ag_binary.TypeID([8]byte{31, 217, 180, 147, 224, 40, 53, 88})
+
 	Instruction_InitVault = ag_binary.TypeID([8]byte{77, 79, 85, 150, 33, 217, 52, 106})
 
-	Instruction_UpdateOracleConfig = ag_binary.TypeID([8]byte{83, 16, 11, 254, 57, 99, 156, 58})
-
 	Instruction_SetVaultSwapWhitelist = ag_binary.TypeID([8]byte{215, 229, 51, 175, 90, 52, 232, 25})
-
-	Instruction_SetVaultOracleConfig = ag_binary.TypeID([8]byte{190, 120, 125, 237, 67, 182, 7, 254})
-
-	Instruction_SetVaultMaxPriceDeviationBps = ag_binary.TypeID([8]byte{48, 112, 97, 177, 143, 175, 79, 181})
 )
 
 // InstructionIDToName returns the name of the instruction given its ID.
@@ -66,32 +56,22 @@ func InstructionIDToName(id ag_binary.TypeID) string {
 		return "InitVaultProtoConfig"
 	case Instruction_InitVaultPeriod:
 		return "InitVaultPeriod"
-	case Instruction_InitOracleConfig:
-		return "InitOracleConfig"
 	case Instruction_Deposit:
 		return "Deposit"
 	case Instruction_DepositWithMetadata:
 		return "DepositWithMetadata"
-	case Instruction_DripSplTokenSwap:
-		return "DripSplTokenSwap"
-	case Instruction_DripOrcaWhirlpool:
-		return "DripOrcaWhirlpool"
-	case Instruction_DripV2OrcaWhirlpool:
-		return "DripV2OrcaWhirlpool"
 	case Instruction_WithdrawB:
 		return "WithdrawB"
 	case Instruction_ClosePosition:
 		return "ClosePosition"
+	case Instruction_DripSplTokenSwap:
+		return "DripSplTokenSwap"
+	case Instruction_DripOrcaWhirlpool:
+		return "DripOrcaWhirlpool"
 	case Instruction_InitVault:
 		return "InitVault"
-	case Instruction_UpdateOracleConfig:
-		return "UpdateOracleConfig"
 	case Instruction_SetVaultSwapWhitelist:
 		return "SetVaultSwapWhitelist"
-	case Instruction_SetVaultOracleConfig:
-		return "SetVaultOracleConfig"
-	case Instruction_SetVaultMaxPriceDeviationBps:
-		return "SetVaultMaxPriceDeviationBps"
 	default:
 		return ""
 	}
@@ -119,22 +99,10 @@ var InstructionImplDef = ag_binary.NewVariantDefinition(
 			"init_vault_period", (*InitVaultPeriod)(nil),
 		},
 		{
-			"init_oracle_config", (*InitOracleConfig)(nil),
-		},
-		{
 			"deposit", (*Deposit)(nil),
 		},
 		{
 			"deposit_with_metadata", (*DepositWithMetadata)(nil),
-		},
-		{
-			"drip_spl_token_swap", (*DripSplTokenSwap)(nil),
-		},
-		{
-			"drip_orca_whirlpool", (*DripOrcaWhirlpool)(nil),
-		},
-		{
-			"drip_v2_orca_whirlpool", (*DripV2OrcaWhirlpool)(nil),
 		},
 		{
 			"withdraw_b", (*WithdrawB)(nil),
@@ -143,19 +111,16 @@ var InstructionImplDef = ag_binary.NewVariantDefinition(
 			"close_position", (*ClosePosition)(nil),
 		},
 		{
+			"drip_spl_token_swap", (*DripSplTokenSwap)(nil),
+		},
+		{
+			"drip_orca_whirlpool", (*DripOrcaWhirlpool)(nil),
+		},
+		{
 			"init_vault", (*InitVault)(nil),
 		},
 		{
-			"update_oracle_config", (*UpdateOracleConfig)(nil),
-		},
-		{
 			"set_vault_swap_whitelist", (*SetVaultSwapWhitelist)(nil),
-		},
-		{
-			"set_vault_oracle_config", (*SetVaultOracleConfig)(nil),
-		},
-		{
-			"set_vault_max_price_deviation_bps", (*SetVaultMaxPriceDeviationBps)(nil),
 		},
 	},
 )

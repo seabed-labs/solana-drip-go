@@ -12,13 +12,13 @@ import (
 
 // SetVaultSwapWhitelist is the `setVaultSwapWhitelist` instruction.
 type SetVaultSwapWhitelist struct {
-	Params *SetVaultWhitelistedSwapsParams
+	Params *UpdateVaultWhitelistedSwapsParams
 
-	// ····· vaultUpdateCommonAccounts: [0] = [WRITE, SIGNER] admin
+	// [0] = [WRITE, SIGNER] admin
 	//
-	// ································ [1] = [WRITE] vault
+	// [1] = [WRITE] vault
 	//
-	// ································ [2] = [] vaultProtoConfig
+	// [2] = [] vaultProtoConfig
 	ag_solanago.AccountMetaSlice `bin:"-"`
 }
 
@@ -31,58 +31,41 @@ func NewSetVaultSwapWhitelistInstructionBuilder() *SetVaultSwapWhitelist {
 }
 
 // SetParams sets the "params" parameter.
-func (inst *SetVaultSwapWhitelist) SetParams(params SetVaultWhitelistedSwapsParams) *SetVaultSwapWhitelist {
+func (inst *SetVaultSwapWhitelist) SetParams(params UpdateVaultWhitelistedSwapsParams) *SetVaultSwapWhitelist {
 	inst.Params = &params
 	return inst
 }
 
-type SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder struct {
-	ag_solanago.AccountMetaSlice `bin:"-"`
-}
-
-func NewSetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder() *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder {
-	return &SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder{
-		AccountMetaSlice: make(ag_solanago.AccountMetaSlice, 3),
-	}
-}
-
-func (inst *SetVaultSwapWhitelist) SetVaultUpdateCommonAccountsAccountsFromBuilder(setVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder) *SetVaultSwapWhitelist {
-	inst.AccountMetaSlice[0] = setVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder.GetAdminAccount()
-	inst.AccountMetaSlice[1] = setVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder.GetVaultAccount()
-	inst.AccountMetaSlice[2] = setVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder.GetVaultProtoConfigAccount()
-	return inst
-}
-
 // SetAdminAccount sets the "admin" account.
-func (inst *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder) SetAdminAccount(admin ag_solanago.PublicKey) *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder {
+func (inst *SetVaultSwapWhitelist) SetAdminAccount(admin ag_solanago.PublicKey) *SetVaultSwapWhitelist {
 	inst.AccountMetaSlice[0] = ag_solanago.Meta(admin).WRITE().SIGNER()
 	return inst
 }
 
 // GetAdminAccount gets the "admin" account.
-func (inst *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder) GetAdminAccount() *ag_solanago.AccountMeta {
+func (inst *SetVaultSwapWhitelist) GetAdminAccount() *ag_solanago.AccountMeta {
 	return inst.AccountMetaSlice.Get(0)
 }
 
 // SetVaultAccount sets the "vault" account.
-func (inst *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder) SetVaultAccount(vault ag_solanago.PublicKey) *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder {
+func (inst *SetVaultSwapWhitelist) SetVaultAccount(vault ag_solanago.PublicKey) *SetVaultSwapWhitelist {
 	inst.AccountMetaSlice[1] = ag_solanago.Meta(vault).WRITE()
 	return inst
 }
 
 // GetVaultAccount gets the "vault" account.
-func (inst *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder) GetVaultAccount() *ag_solanago.AccountMeta {
+func (inst *SetVaultSwapWhitelist) GetVaultAccount() *ag_solanago.AccountMeta {
 	return inst.AccountMetaSlice.Get(1)
 }
 
 // SetVaultProtoConfigAccount sets the "vaultProtoConfig" account.
-func (inst *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder) SetVaultProtoConfigAccount(vaultProtoConfig ag_solanago.PublicKey) *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder {
+func (inst *SetVaultSwapWhitelist) SetVaultProtoConfigAccount(vaultProtoConfig ag_solanago.PublicKey) *SetVaultSwapWhitelist {
 	inst.AccountMetaSlice[2] = ag_solanago.Meta(vaultProtoConfig)
 	return inst
 }
 
 // GetVaultProtoConfigAccount gets the "vaultProtoConfig" account.
-func (inst *SetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder) GetVaultProtoConfigAccount() *ag_solanago.AccountMeta {
+func (inst *SetVaultSwapWhitelist) GetVaultProtoConfigAccount() *ag_solanago.AccountMeta {
 	return inst.AccountMetaSlice.Get(2)
 }
 
@@ -114,13 +97,13 @@ func (inst *SetVaultSwapWhitelist) Validate() error {
 	// Check whether all (required) accounts are set:
 	{
 		if inst.AccountMetaSlice[0] == nil {
-			return errors.New("accounts.VaultUpdateCommonAccountsAdmin is not set")
+			return errors.New("accounts.Admin is not set")
 		}
 		if inst.AccountMetaSlice[1] == nil {
-			return errors.New("accounts.VaultUpdateCommonAccountsVault is not set")
+			return errors.New("accounts.Vault is not set")
 		}
 		if inst.AccountMetaSlice[2] == nil {
-			return errors.New("accounts.VaultUpdateCommonAccountsVaultProtoConfig is not set")
+			return errors.New("accounts.VaultProtoConfig is not set")
 		}
 	}
 	return nil
@@ -141,9 +124,9 @@ func (inst *SetVaultSwapWhitelist) EncodeToTree(parent ag_treeout.Branches) {
 
 					// Accounts of the instruction:
 					instructionBranch.Child("Accounts[len=3]").ParentFunc(func(accountsBranch ag_treeout.Branches) {
-						accountsBranch.Child(ag_format.Meta("           vaultUpdateCommonAccounts/admin", inst.AccountMetaSlice.Get(0)))
-						accountsBranch.Child(ag_format.Meta("           vaultUpdateCommonAccounts/vault", inst.AccountMetaSlice.Get(1)))
-						accountsBranch.Child(ag_format.Meta("vaultUpdateCommonAccounts/vaultProtoConfig", inst.AccountMetaSlice.Get(2)))
+						accountsBranch.Child(ag_format.Meta("           admin", inst.AccountMetaSlice.Get(0)))
+						accountsBranch.Child(ag_format.Meta("           vault", inst.AccountMetaSlice.Get(1)))
+						accountsBranch.Child(ag_format.Meta("vaultProtoConfig", inst.AccountMetaSlice.Get(2)))
 					})
 				})
 		})
@@ -169,17 +152,14 @@ func (obj *SetVaultSwapWhitelist) UnmarshalWithDecoder(decoder *ag_binary.Decode
 // NewSetVaultSwapWhitelistInstruction declares a new SetVaultSwapWhitelist instruction with the provided parameters and accounts.
 func NewSetVaultSwapWhitelistInstruction(
 	// Parameters:
-	params SetVaultWhitelistedSwapsParams,
+	params UpdateVaultWhitelistedSwapsParams,
 	// Accounts:
-	vaultUpdateCommonAccountsAdmin ag_solanago.PublicKey,
-	vaultUpdateCommonAccountsVault ag_solanago.PublicKey,
-	vaultUpdateCommonAccountsVaultProtoConfig ag_solanago.PublicKey) *SetVaultSwapWhitelist {
+	admin ag_solanago.PublicKey,
+	vault ag_solanago.PublicKey,
+	vaultProtoConfig ag_solanago.PublicKey) *SetVaultSwapWhitelist {
 	return NewSetVaultSwapWhitelistInstructionBuilder().
 		SetParams(params).
-		SetVaultUpdateCommonAccountsAccountsFromBuilder(
-			NewSetVaultSwapWhitelistVaultUpdateCommonAccountsAccountsBuilder().
-				SetAdminAccount(vaultUpdateCommonAccountsAdmin).
-				SetVaultAccount(vaultUpdateCommonAccountsVault).
-				SetVaultProtoConfigAccount(vaultUpdateCommonAccountsVaultProtoConfig),
-		)
+		SetAdminAccount(admin).
+		SetVaultAccount(vault).
+		SetVaultProtoConfigAccount(vaultProtoConfig)
 }
