@@ -65,18 +65,42 @@ func NewInitVaultInstructionBuilder() *InitVault {
 
 func (inst *InitVault) GetInitVaultAccounts() *InitVaultAccounts {
 	res := &InitVaultAccounts{}
-	res.Vault = inst.AccountMetaSlice[0].PublicKey
-	res.VaultProtoConfig = inst.AccountMetaSlice[1].PublicKey
-	res.TokenAAccount = inst.AccountMetaSlice[2].PublicKey
-	res.TokenBAccount = inst.AccountMetaSlice[3].PublicKey
-	res.TreasuryTokenBAccount = inst.AccountMetaSlice[4].PublicKey
-	res.TokenAMint = inst.AccountMetaSlice[5].PublicKey
-	res.TokenBMint = inst.AccountMetaSlice[6].PublicKey
-	res.Creator = inst.AccountMetaSlice[7].PublicKey
-	res.TokenProgram = inst.AccountMetaSlice[8].PublicKey
-	res.AssociatedTokenProgram = inst.AccountMetaSlice[9].PublicKey
-	res.SystemProgram = inst.AccountMetaSlice[10].PublicKey
-	res.Rent = inst.AccountMetaSlice[11].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.Vault = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.VaultProtoConfig = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.TokenAAccount = inst.AccountMetaSlice[2].PublicKey
+	}
+	if inst.AccountMetaSlice[3] != nil {
+		res.TokenBAccount = inst.AccountMetaSlice[3].PublicKey
+	}
+	if inst.AccountMetaSlice[4] != nil {
+		res.TreasuryTokenBAccount = inst.AccountMetaSlice[4].PublicKey
+	}
+	if inst.AccountMetaSlice[5] != nil {
+		res.TokenAMint = inst.AccountMetaSlice[5].PublicKey
+	}
+	if inst.AccountMetaSlice[6] != nil {
+		res.TokenBMint = inst.AccountMetaSlice[6].PublicKey
+	}
+	if inst.AccountMetaSlice[7] != nil {
+		res.Creator = inst.AccountMetaSlice[7].PublicKey
+	}
+	if inst.AccountMetaSlice[8] != nil {
+		res.TokenProgram = inst.AccountMetaSlice[8].PublicKey
+	}
+	if inst.AccountMetaSlice[9] != nil {
+		res.AssociatedTokenProgram = inst.AccountMetaSlice[9].PublicKey
+	}
+	if inst.AccountMetaSlice[10] != nil {
+		res.SystemProgram = inst.AccountMetaSlice[10].PublicKey
+	}
+	if inst.AccountMetaSlice[11] != nil {
+		res.Rent = inst.AccountMetaSlice[11].PublicKey
+	}
 	return res
 }
 

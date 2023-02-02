@@ -70,20 +70,48 @@ func NewWithdrawBInstructionBuilder() *WithdrawB {
 
 func (inst *WithdrawB) GetWithdrawBAccounts() *WithdrawBAccounts {
 	res := &WithdrawBAccounts{}
-	res.Vault = inst.AccountMetaSlice[0].PublicKey
-	res.VaultProtoConfig = inst.AccountMetaSlice[1].PublicKey
-	res.VaultPeriodI = inst.AccountMetaSlice[2].PublicKey
-	res.VaultPeriodJ = inst.AccountMetaSlice[3].PublicKey
-	res.UserPosition = inst.AccountMetaSlice[4].PublicKey
-	res.UserPositionNftAccount = inst.AccountMetaSlice[5].PublicKey
-	res.VaultTokenBAccount = inst.AccountMetaSlice[6].PublicKey
-	res.UserTokenBAccount = inst.AccountMetaSlice[7].PublicKey
-	res.VaultTreasuryTokenBAccount = inst.AccountMetaSlice[8].PublicKey
-	res.UserPositionNftMint = inst.AccountMetaSlice[9].PublicKey
-	res.TokenBMint = inst.AccountMetaSlice[10].PublicKey
-	res.Withdrawer = inst.AccountMetaSlice[11].PublicKey
-	res.TokenProgram = inst.AccountMetaSlice[12].PublicKey
-	res.AssociatedTokenProgram = inst.AccountMetaSlice[13].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.Vault = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.VaultProtoConfig = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.VaultPeriodI = inst.AccountMetaSlice[2].PublicKey
+	}
+	if inst.AccountMetaSlice[3] != nil {
+		res.VaultPeriodJ = inst.AccountMetaSlice[3].PublicKey
+	}
+	if inst.AccountMetaSlice[4] != nil {
+		res.UserPosition = inst.AccountMetaSlice[4].PublicKey
+	}
+	if inst.AccountMetaSlice[5] != nil {
+		res.UserPositionNftAccount = inst.AccountMetaSlice[5].PublicKey
+	}
+	if inst.AccountMetaSlice[6] != nil {
+		res.VaultTokenBAccount = inst.AccountMetaSlice[6].PublicKey
+	}
+	if inst.AccountMetaSlice[7] != nil {
+		res.UserTokenBAccount = inst.AccountMetaSlice[7].PublicKey
+	}
+	if inst.AccountMetaSlice[8] != nil {
+		res.VaultTreasuryTokenBAccount = inst.AccountMetaSlice[8].PublicKey
+	}
+	if inst.AccountMetaSlice[9] != nil {
+		res.UserPositionNftMint = inst.AccountMetaSlice[9].PublicKey
+	}
+	if inst.AccountMetaSlice[10] != nil {
+		res.TokenBMint = inst.AccountMetaSlice[10].PublicKey
+	}
+	if inst.AccountMetaSlice[11] != nil {
+		res.Withdrawer = inst.AccountMetaSlice[11].PublicKey
+	}
+	if inst.AccountMetaSlice[12] != nil {
+		res.TokenProgram = inst.AccountMetaSlice[12].PublicKey
+	}
+	if inst.AccountMetaSlice[13] != nil {
+		res.AssociatedTokenProgram = inst.AccountMetaSlice[13].PublicKey
+	}
 	return res
 }
 

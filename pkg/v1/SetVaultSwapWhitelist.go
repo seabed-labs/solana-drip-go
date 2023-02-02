@@ -38,9 +38,15 @@ func NewSetVaultSwapWhitelistInstructionBuilder() *SetVaultSwapWhitelist {
 
 func (inst *SetVaultSwapWhitelist) GetSetVaultSwapWhitelistAccounts() *SetVaultSwapWhitelistAccounts {
 	res := &SetVaultSwapWhitelistAccounts{}
-	res.Admin = inst.AccountMetaSlice[0].PublicKey
-	res.Vault = inst.AccountMetaSlice[1].PublicKey
-	res.VaultProtoConfig = inst.AccountMetaSlice[2].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.Admin = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.Vault = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.VaultProtoConfig = inst.AccountMetaSlice[2].PublicKey
+	}
 	return res
 }
 

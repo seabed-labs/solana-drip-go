@@ -88,26 +88,66 @@ func NewDripOrcaWhirlpoolInstructionBuilder() *DripOrcaWhirlpool {
 
 func (inst *DripOrcaWhirlpool) GetDripOrcaWhirlpoolAccounts() *DripOrcaWhirlpoolAccounts {
 	res := &DripOrcaWhirlpoolAccounts{}
-	res.DripTriggerSource = inst.AccountMetaSlice[0].PublicKey
-	res.Vault = inst.AccountMetaSlice[1].PublicKey
-	res.VaultProtoConfig = inst.AccountMetaSlice[2].PublicKey
-	res.LastVaultPeriod = inst.AccountMetaSlice[3].PublicKey
-	res.CurrentVaultPeriod = inst.AccountMetaSlice[4].PublicKey
-	res.VaultTokenAAccount = inst.AccountMetaSlice[5].PublicKey
-	res.VaultTokenBAccount = inst.AccountMetaSlice[6].PublicKey
-	res.SwapTokenAAccount = inst.AccountMetaSlice[7].PublicKey
-	res.SwapTokenBAccount = inst.AccountMetaSlice[8].PublicKey
-	res.DripFeeTokenAAccount = inst.AccountMetaSlice[9].PublicKey
-	res.TokenProgram = inst.AccountMetaSlice[10].PublicKey
-	res.AssociatedTokenProgram = inst.AccountMetaSlice[11].PublicKey
-	res.WhirlpoolProgram = inst.AccountMetaSlice[12].PublicKey
-	res.SystemProgram = inst.AccountMetaSlice[13].PublicKey
-	res.Rent = inst.AccountMetaSlice[14].PublicKey
-	res.Whirlpool = inst.AccountMetaSlice[15].PublicKey
-	res.TickArray0 = inst.AccountMetaSlice[16].PublicKey
-	res.TickArray1 = inst.AccountMetaSlice[17].PublicKey
-	res.TickArray2 = inst.AccountMetaSlice[18].PublicKey
-	res.Oracle = inst.AccountMetaSlice[19].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.DripTriggerSource = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.Vault = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.VaultProtoConfig = inst.AccountMetaSlice[2].PublicKey
+	}
+	if inst.AccountMetaSlice[3] != nil {
+		res.LastVaultPeriod = inst.AccountMetaSlice[3].PublicKey
+	}
+	if inst.AccountMetaSlice[4] != nil {
+		res.CurrentVaultPeriod = inst.AccountMetaSlice[4].PublicKey
+	}
+	if inst.AccountMetaSlice[5] != nil {
+		res.VaultTokenAAccount = inst.AccountMetaSlice[5].PublicKey
+	}
+	if inst.AccountMetaSlice[6] != nil {
+		res.VaultTokenBAccount = inst.AccountMetaSlice[6].PublicKey
+	}
+	if inst.AccountMetaSlice[7] != nil {
+		res.SwapTokenAAccount = inst.AccountMetaSlice[7].PublicKey
+	}
+	if inst.AccountMetaSlice[8] != nil {
+		res.SwapTokenBAccount = inst.AccountMetaSlice[8].PublicKey
+	}
+	if inst.AccountMetaSlice[9] != nil {
+		res.DripFeeTokenAAccount = inst.AccountMetaSlice[9].PublicKey
+	}
+	if inst.AccountMetaSlice[10] != nil {
+		res.TokenProgram = inst.AccountMetaSlice[10].PublicKey
+	}
+	if inst.AccountMetaSlice[11] != nil {
+		res.AssociatedTokenProgram = inst.AccountMetaSlice[11].PublicKey
+	}
+	if inst.AccountMetaSlice[12] != nil {
+		res.WhirlpoolProgram = inst.AccountMetaSlice[12].PublicKey
+	}
+	if inst.AccountMetaSlice[13] != nil {
+		res.SystemProgram = inst.AccountMetaSlice[13].PublicKey
+	}
+	if inst.AccountMetaSlice[14] != nil {
+		res.Rent = inst.AccountMetaSlice[14].PublicKey
+	}
+	if inst.AccountMetaSlice[15] != nil {
+		res.Whirlpool = inst.AccountMetaSlice[15].PublicKey
+	}
+	if inst.AccountMetaSlice[16] != nil {
+		res.TickArray0 = inst.AccountMetaSlice[16].PublicKey
+	}
+	if inst.AccountMetaSlice[17] != nil {
+		res.TickArray1 = inst.AccountMetaSlice[17].PublicKey
+	}
+	if inst.AccountMetaSlice[18] != nil {
+		res.TickArray2 = inst.AccountMetaSlice[18].PublicKey
+	}
+	if inst.AccountMetaSlice[19] != nil {
+		res.Oracle = inst.AccountMetaSlice[19].PublicKey
+	}
 	return res
 }
 

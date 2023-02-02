@@ -70,19 +70,45 @@ func NewDepositInstructionBuilder() *Deposit {
 
 func (inst *Deposit) GetDepositAccounts() *DepositAccounts {
 	res := &DepositAccounts{}
-	res.Common.Depositor = inst.AccountMetaSlice[0].PublicKey
-	res.Common.Vault = inst.AccountMetaSlice[1].PublicKey
-	res.Common.VaultPeriodEnd = inst.AccountMetaSlice[2].PublicKey
-	res.Common.VaultTokenAAccount = inst.AccountMetaSlice[3].PublicKey
-	res.Common.UserTokenAAccount = inst.AccountMetaSlice[4].PublicKey
-	res.Common.UserPosition = inst.AccountMetaSlice[5].PublicKey
-	res.Common.UserPositionNftMint = inst.AccountMetaSlice[6].PublicKey
-	res.Common.UserPositionNftAccount = inst.AccountMetaSlice[7].PublicKey
-	res.Common.Referrer = inst.AccountMetaSlice[8].PublicKey
-	res.Common.TokenProgram = inst.AccountMetaSlice[9].PublicKey
-	res.Common.AssociatedTokenProgram = inst.AccountMetaSlice[10].PublicKey
-	res.Common.Rent = inst.AccountMetaSlice[11].PublicKey
-	res.Common.SystemProgram = inst.AccountMetaSlice[12].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.Common.Depositor = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.Common.Vault = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.Common.VaultPeriodEnd = inst.AccountMetaSlice[2].PublicKey
+	}
+	if inst.AccountMetaSlice[3] != nil {
+		res.Common.VaultTokenAAccount = inst.AccountMetaSlice[3].PublicKey
+	}
+	if inst.AccountMetaSlice[4] != nil {
+		res.Common.UserTokenAAccount = inst.AccountMetaSlice[4].PublicKey
+	}
+	if inst.AccountMetaSlice[5] != nil {
+		res.Common.UserPosition = inst.AccountMetaSlice[5].PublicKey
+	}
+	if inst.AccountMetaSlice[6] != nil {
+		res.Common.UserPositionNftMint = inst.AccountMetaSlice[6].PublicKey
+	}
+	if inst.AccountMetaSlice[7] != nil {
+		res.Common.UserPositionNftAccount = inst.AccountMetaSlice[7].PublicKey
+	}
+	if inst.AccountMetaSlice[8] != nil {
+		res.Common.Referrer = inst.AccountMetaSlice[8].PublicKey
+	}
+	if inst.AccountMetaSlice[9] != nil {
+		res.Common.TokenProgram = inst.AccountMetaSlice[9].PublicKey
+	}
+	if inst.AccountMetaSlice[10] != nil {
+		res.Common.AssociatedTokenProgram = inst.AccountMetaSlice[10].PublicKey
+	}
+	if inst.AccountMetaSlice[11] != nil {
+		res.Common.Rent = inst.AccountMetaSlice[11].PublicKey
+	}
+	if inst.AccountMetaSlice[12] != nil {
+		res.Common.SystemProgram = inst.AccountMetaSlice[12].PublicKey
+	}
 	return res
 }
 

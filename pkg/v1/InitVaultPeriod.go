@@ -41,10 +41,18 @@ func NewInitVaultPeriodInstructionBuilder() *InitVaultPeriod {
 
 func (inst *InitVaultPeriod) GetInitVaultPeriodAccounts() *InitVaultPeriodAccounts {
 	res := &InitVaultPeriodAccounts{}
-	res.VaultPeriod = inst.AccountMetaSlice[0].PublicKey
-	res.Vault = inst.AccountMetaSlice[1].PublicKey
-	res.Creator = inst.AccountMetaSlice[2].PublicKey
-	res.SystemProgram = inst.AccountMetaSlice[3].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.VaultPeriod = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.Vault = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.Creator = inst.AccountMetaSlice[2].PublicKey
+	}
+	if inst.AccountMetaSlice[3] != nil {
+		res.SystemProgram = inst.AccountMetaSlice[3].PublicKey
+	}
 	return res
 }
 

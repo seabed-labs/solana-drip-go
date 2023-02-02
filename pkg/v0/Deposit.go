@@ -68,19 +68,45 @@ func NewDepositInstructionBuilder() *Deposit {
 
 func (inst *Deposit) GetDepositAccounts() *DepositAccounts {
 	res := &DepositAccounts{}
-	res.Vault = inst.AccountMetaSlice[0].PublicKey
-	res.VaultPeriodEnd = inst.AccountMetaSlice[1].PublicKey
-	res.UserPosition = inst.AccountMetaSlice[2].PublicKey
-	res.TokenAMint = inst.AccountMetaSlice[3].PublicKey
-	res.UserPositionNftMint = inst.AccountMetaSlice[4].PublicKey
-	res.VaultTokenAAccount = inst.AccountMetaSlice[5].PublicKey
-	res.UserTokenAAccount = inst.AccountMetaSlice[6].PublicKey
-	res.UserPositionNftAccount = inst.AccountMetaSlice[7].PublicKey
-	res.Depositor = inst.AccountMetaSlice[8].PublicKey
-	res.TokenProgram = inst.AccountMetaSlice[9].PublicKey
-	res.AssociatedTokenProgram = inst.AccountMetaSlice[10].PublicKey
-	res.Rent = inst.AccountMetaSlice[11].PublicKey
-	res.SystemProgram = inst.AccountMetaSlice[12].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.Vault = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.VaultPeriodEnd = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.UserPosition = inst.AccountMetaSlice[2].PublicKey
+	}
+	if inst.AccountMetaSlice[3] != nil {
+		res.TokenAMint = inst.AccountMetaSlice[3].PublicKey
+	}
+	if inst.AccountMetaSlice[4] != nil {
+		res.UserPositionNftMint = inst.AccountMetaSlice[4].PublicKey
+	}
+	if inst.AccountMetaSlice[5] != nil {
+		res.VaultTokenAAccount = inst.AccountMetaSlice[5].PublicKey
+	}
+	if inst.AccountMetaSlice[6] != nil {
+		res.UserTokenAAccount = inst.AccountMetaSlice[6].PublicKey
+	}
+	if inst.AccountMetaSlice[7] != nil {
+		res.UserPositionNftAccount = inst.AccountMetaSlice[7].PublicKey
+	}
+	if inst.AccountMetaSlice[8] != nil {
+		res.Depositor = inst.AccountMetaSlice[8].PublicKey
+	}
+	if inst.AccountMetaSlice[9] != nil {
+		res.TokenProgram = inst.AccountMetaSlice[9].PublicKey
+	}
+	if inst.AccountMetaSlice[10] != nil {
+		res.AssociatedTokenProgram = inst.AccountMetaSlice[10].PublicKey
+	}
+	if inst.AccountMetaSlice[11] != nil {
+		res.Rent = inst.AccountMetaSlice[11].PublicKey
+	}
+	if inst.AccountMetaSlice[12] != nil {
+		res.SystemProgram = inst.AccountMetaSlice[12].PublicKey
+	}
 	return res
 }
 

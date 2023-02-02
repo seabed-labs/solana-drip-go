@@ -38,9 +38,15 @@ func NewInitVaultProtoConfigInstructionBuilder() *InitVaultProtoConfig {
 
 func (inst *InitVaultProtoConfig) GetInitVaultProtoConfigAccounts() *InitVaultProtoConfigAccounts {
 	res := &InitVaultProtoConfigAccounts{}
-	res.Creator = inst.AccountMetaSlice[0].PublicKey
-	res.VaultProtoConfig = inst.AccountMetaSlice[1].PublicKey
-	res.SystemProgram = inst.AccountMetaSlice[2].PublicKey
+	if inst.AccountMetaSlice[0] != nil {
+		res.Creator = inst.AccountMetaSlice[0].PublicKey
+	}
+	if inst.AccountMetaSlice[1] != nil {
+		res.VaultProtoConfig = inst.AccountMetaSlice[1].PublicKey
+	}
+	if inst.AccountMetaSlice[2] != nil {
+		res.SystemProgram = inst.AccountMetaSlice[2].PublicKey
+	}
 	return res
 }
 
