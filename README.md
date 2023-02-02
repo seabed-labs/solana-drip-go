@@ -1,6 +1,6 @@
 # Solana Drip Go
 
-Solana Drip Go Clients generated via anchor-go
+Solana Drip Go Clients generated via dcaf-mocha/anchor-go
 
 ## Getting Started
 
